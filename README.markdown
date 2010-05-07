@@ -17,7 +17,7 @@ Just add it as a dependency in your project.clj and you're good to
 go. Refer the [clojars page](http://clojars.org/lein-run) for the
 latest version to use.
 
-    :dependencies [[lein-run "0.1.0-SNAPSHOT"]]
+    :dependencies [[lein-run "1.0.0-SNAPSHOT"]]
 
 Usage
 -----
