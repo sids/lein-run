@@ -6,8 +6,8 @@ A leiningen plugin to call a function in a new process or run a .clj file.
 lein-run is extremely useful when you want to launch long-running
 Clojure process from the command line. For example, it can be used to
 start a server (a web server like Compojure) or to start a process
-that will run in an infinite loop (a process waiting for a messages
-from a message queue, a twitter client etc.)
+that will run in an infinite loop (a process waiting for messages from
+a message queue, a twitter client etc.)
 
 Setup
 -----
@@ -41,8 +41,8 @@ appended to args from the alias definition.
     :run-aliases {:alias1 [a-namespace a-function "arg1" "arg2"]
                   :alias2 ["a-file" "arg1" "arg2"]}
 
-Alias names can be keywords or strings. All args (including namespace
-name, function name and file path) will be converted to strings.
+Alias names can be keywords or strings. All args will be converted to
+strings.
 
 Example
 -------
@@ -59,7 +59,12 @@ Let's say you have a simple Compojure webapp:
       (route/not-found "Page not found"))
 
     (defn start-server [port]
-      (run-jetty example {:port (Integer/parseInt port)}))
+      (run-jetty example {:port port}))
+
+    (defn -main [& [port]]
+      (if port
+        (start-server (Integer/parseInt port))
+        (start-server 8080)))
 
 You can start the server this way:
 
@@ -67,7 +72,7 @@ You can start the server this way:
 
 You can also define an alias:
 
-    :run-aliases {:server [hello-www.core start-server]}
+    :run-aliases {:server [hello-www.core -main]}
 
 and then use it to start the server:
 
@@ -75,7 +80,7 @@ and then use it to start the server:
 
 If you hardcode the port into the alias definition:
 
-    :run-aliases {:server [hello-www.core start-server 8080]}
+    :run-aliases {:server [hello-www.core -main 8080]}
 
 you won't have to specify it on the command line:
 
