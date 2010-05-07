@@ -29,7 +29,8 @@ ns/f, passing it the args."
 (defn- run-in-project
   "Runs the file using clojure.main/main. Passes on the args as command line args."
   [project file & args]
-  (apply clojure.main/main file args))
+  (eval-in-project project
+                   `(clojure.main/main ~file ~@args)))
 
 (defn run
   "Call a function in a new process or run a .clj file.
