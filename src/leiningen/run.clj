@@ -57,5 +57,7 @@ Args from the command line are appended to args from the alias definition."
                file rest-args)
         (apply call-in-project project
                first-arg rest-args)))
-    (println "What shall I run? `lein help run`:\n\n"
-             (:doc (meta (var run))))))
+    (if (:default (:run-aliases project))
+      (run project "default")
+      (println "What shall I run? `lein help run`:\n\n"
+	       (:doc (meta (var run)))))))

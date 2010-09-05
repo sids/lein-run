@@ -21,6 +21,7 @@
 (deftest test-alias
   (are [expected-output args] (= expected-output
                                  (lein-run args))
+       "hello nil\n"                    []
        "hello (world)\n"                ["test-1" "world"]
        "hello (world oh)\n"             ["test-2"]
        "hello (world oh sweet world)\n" ["test-3" "world"]
