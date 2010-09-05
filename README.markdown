@@ -17,7 +17,7 @@ Just add it as a dependency in your project.clj and you're good to
 go. Refer the [clojars page](http://clojars.org/lein-run) for the
 latest version to use.
 
-    :dependencies [[lein-run "1.0.0-SNAPSHOT"]]
+    :dev-dependencies [[lein-run "1.0.0"]]
 
 Usage
 -----
@@ -25,7 +25,7 @@ Usage
     lein run <file> [<arg> ...]
 
 file must be a path relative to the project root. It will be run
-using clojure.main/main. Args will be passed on as *command-line-args*.
+using clojure.main/main. Args will be passed on as `*command-line-args*`.
 
     lein run <namespace> [<function> [<arg> ...]]
 
