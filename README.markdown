@@ -1,3 +1,10 @@
+DEPRECATED
+==========
+
+This plugin is now deprecated in favor of the built-in run task in Leiningen
+1.4 and later. The built-in run task is a subset of the lein-run plugin with
+some undesired functionality removed.
+
 lein-run Leiningen Plugin
 =========================
 
